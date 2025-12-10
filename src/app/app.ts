@@ -1,12 +1,21 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
+import { Product, ProductService } from "./services/product";
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+	selector: "app-root",
+	standalone: true,
+	imports: [CommonModule],
+	templateUrl: "./app.html",
 })
-export class App {
-  protected readonly title = signal('gestion-productos');
+
+export class AppComponent {
+
+  constructor (private productService: ProductService){
+    this.productService.cargarProductos().subscribe(
+      (datos: Product[]) => {
+        console.log('Productos cargados desde la API:', datos);
+      }
+    );
+  }
 }
