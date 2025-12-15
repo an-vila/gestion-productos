@@ -11,7 +11,7 @@
 </header>
 
 <!-- CONTENIDO PRINCIPAL -->
-<main class="container mb-5">
+<!-- <main class="container mb-5">
 
   <app-product-form
     (productoCreado)="onProductoCreado($event)">
@@ -21,7 +21,36 @@
 
   <app-products-list></app-products-list>
 
+</main> -->
+
+<main class="container mb-5">
+  <!-- La clase row hace que el display se vuelva grid con orientacion horizontal. De este modo,
+  podemos colocar los elementos hijo en dos columnas y poder ver el todo el contenido de golpe
+  y el form y el input quedan un poco mas recogidos en un monitor grande y lo vemos en un formato
+  al que estamos mas acostumbrados -->
+  <div class="row">
+    <!-- Con las clases col, tanto en el aside como en el div posterior, podemos elegir como se reparten
+    el espacio del div padre y hacerlo responsive. En pantallas pequeñas cada uno de los elementos
+    cogera todo el espacio disponible con el col-12. En pantallas mas grandes, el aside ocupara 4
+    partes de doce y en pantallas aun mas grandes, 3 de 12. El div ocupara el resto del espacio -->
+    <aside class="col-12 col-lg-4 col-xl-3 mt-5">
+      <app-product-form
+        (productoCreado)="onProductoCreado($event)">
+      </app-product-form>
+
+      <!-- Se ha añadido un margin top a los filtros para poder separarlos un poco del form -->
+      <div class="mt-4" >
+        <app-product-filter></app-product-filter>
+      </div>
+    </aside>
+    
+
+    <div class="col-12 col-lg-8 col-xl-9">
+      <app-products-list></app-products-list>
+    </div>
+  </div>
 </main>
+
 <!-- FOOTER -->
 <footer class="bg-light py-3 text-center border-top mt-5">
   <p class="m-0 text-muted">

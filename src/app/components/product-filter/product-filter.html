@@ -3,8 +3,10 @@
   <h5 class="fw-semibold mb-3">Filtrar productos</h5>
 
   <div class="row g-3">
-
-    <div class="col-md-4">
+    <!-- Lo que he hecho aqui es cambiar las clases propuestas para los div que
+    recogen los filtros por col-12 para que cojan todo el espacio disponible
+    y se coloque cada uno de los filtros en una linea -->
+    <div class="col-12">
       <input
         type="text"
         class="form-control"
@@ -12,7 +14,7 @@
         (input)="onNombreChange($event)">
     </div>
 
-    <div class="col-md-4">
+    <div class="col-12">
       <input
         type="text"
         class="form-control"
@@ -20,7 +22,7 @@
         (input)="onCategoriaChange($event)">
     </div>
 
-    <div class="col-md-4 d-flex align-items-center">
+    <div class="col-12">
       <div class="form-check">
         <input
           class="form-check-input"
