@@ -14,14 +14,14 @@ import { ProductFormComponent } from "./components/product-form/product-form";
 export class AppComponent {
 
   constructor (private productService: ProductService){
-    this.productService.cargarProductos().subscribe(
-      (datos: Product[]) => {
-        console.log('Productos cargados desde la API:', datos);
-      }
-    );
+    // this.productService.cargarProductos().subscribe(
+    //  (datos: Product[]) => {
+    //    console.log('Productos cargados desde la API:', datos);
+    //  }
+    //);
   }
 
   onProductoCreado(producto: any) {
-      console.log('Producto recibido desde el formulario:', producto);
+    this.productService.agregarProducto(producto);
   }
 }

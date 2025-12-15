@@ -13,12 +13,10 @@ export class ProductsListComponent {
 
   productos: Product[] = [];
 
-  constructor (private productService: ProductService){
-    this.productService.cargarProductos().subscribe(
-      (datos) => {
-        this.productos = datos;
-        console.log('Productos recibidos', datos);
-      }
-    );
+    constructor(private productService: ProductService) {
+    this.productService.productos$.subscribe(productos => {
+    this.productos = productos;
+      console.log('Productos recibidos:', productos);
+    });
   }
 }

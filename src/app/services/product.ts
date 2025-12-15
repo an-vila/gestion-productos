@@ -1,4 +1,4 @@
-import type { HttpClient } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
@@ -17,15 +17,17 @@ export interface Product {
 export class ProductService {
 	private url = "https://api.npoint.io/1dee63ad8437c82b24fe";
 
-	private productosSubject = new BehaviorSubject([]);
+	private productosSubject = new BehaviorSubject<Product[]>([]);
 	productos$ = this.productosSubject.asObservable();
 
 	private productosOriginales: Product[] = [];
 
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) {
+		this.cargarProductos();
+	}
 
 	cargarProductos() {
-		this.http.get(this.url).subscribe({
+		this.http.get<Product[]>(this.url).subscribe({
 			next: (productos) => {
 				this.productosOriginales = productos;
 				this.productosSubject.next(productos);
