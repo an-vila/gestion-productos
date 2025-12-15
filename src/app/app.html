@@ -12,9 +12,14 @@
 
 <!-- CONTENIDO PRINCIPAL -->
 <main class="container mb-5">
-  <app-products-list></app-products-list>
-</main>
 
+  <app-product-form
+    (productoCreado)="onProductoCreado($event)">
+  </app-product-form>
+
+  <app-products-list></app-products-list>
+
+</main>
 <!-- FOOTER -->
 <footer class="bg-light py-3 text-center border-top mt-5">
   <p class="m-0 text-muted">
